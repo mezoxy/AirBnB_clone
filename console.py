@@ -129,13 +129,13 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def do_quit(self, args):
+    def do_quit(self, line):
         """Quit command to exit the program\n"""
         return True
 
     def emptyline(self):
         """an empty line + ENTER shouldn’t execute anything"""
-        print
+        print()
 
     def default(self, args):
         lis = args.split(".")
