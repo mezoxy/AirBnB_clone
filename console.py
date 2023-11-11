@@ -14,7 +14,6 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """subclass of cmd"""
-    intro = "Welcom to our console type help for more details\n"
     prompt = "(hbnb) "
 
     classes = {
