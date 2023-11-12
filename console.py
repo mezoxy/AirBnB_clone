@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             if lis[0] not in self.classes:
                 print("** class doesn't exist **")
-            elif lis[0] == "BaseModel" and len(lis) == 1:
+            elif lis[0] in self.classes and len(lis) == 1:
                 print("** instance id missing **")
             elif len(lis) == 2 and lis[0] in self.classes:
                 cle = lis[0] + "." + lis[1]
@@ -140,21 +140,24 @@ class HBNBCommand(cmd.Cmd):
         print()
 
     def default(self, args):
-        lis = args.split(".")
-        if lis[1] == "all()":
-            self.do_all(lis[0])
-        elif lis[1] == "count()":
-            self.do_count(lis[0])
-        elif re.match(r"show.*", lis[1]):
-            match = re.search(r"show\(\"(.*)\"\)", lis[1])
-            if match:
+        try:
+            lis = args.split(".")
+            if lis[1] == "all()":
+                self.do_all(lis[0])
+            elif lis[1] == "count()":
+                self.do_count(lis[0])
+            elif re.match(r"show.*", lis[1]):
+                match = re.search(r"show\(\"(.*)\"\)", lis[1])
+                if match:
+                    iD = match.group(1)
+                    self.do_show(lis[0] + " " + iD)
+            elif re.match(r"destroy", lis[1]):
+                match = re.match(r"destroy\(\"(.*)\"\)", lis[1])
                 iD = match.group(1)
-                self.do_show(lis[0] + " " + iD)
-        elif re.match(r"destroy", lis[1]):
-            match = re.match(r"destroy\(\"(.*)\"\)", lis[1])
-            iD = match.group(1)
-            self.do_destroy(lis[0] + " " + iD)
-        else:
+                self.do_destroy(lis[0] + " " + iD)
+            else:
+                super().default(args)
+        except Exception:
             super().default(args)
 
     def do_count(self, args):
