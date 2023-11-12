@@ -35,8 +35,7 @@ class TestBaseModel(unittest.TestCase):
                 re.match(
                      r'^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-'
                      r'[89ab][a-f0-9]{3}-[a-f0-9]{12}$',
-                     str(self.inst.id))
-                )
+                     str(self.inst.id)))
 
     def test_uniqId(self):
         """check if too instance dont have the same id"""
