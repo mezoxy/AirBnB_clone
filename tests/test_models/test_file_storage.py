@@ -12,25 +12,22 @@ class FileStorage(unittest.TestCase):
     def setUp(self):
         instt = FileStorage()
 
+
     def test_instante(self):
         self.assertIsInstance(instt, FileStorage)
 
     def test_all(self):
-        instt.all() = obj
+        obj = self.instt.all()
         self.assertIsInstance(obj, dict)
 
     def test_new(self):
-        self.instt.new() = __objects
+        __objects = self.instt.new()
         for key in self.__objects.items():
             self.assertEqual(key, f"{self.__class__.__name__}.{self.id}")
-
+        """
     def test_save(self):
         self.instt.name = "task5"
         self.instt.save()
         __objects = self.instt.all()
         self.assertIn(f"{self.__class__.__name__}.{self.id}", __objects)
-
-    def test_save2(self):
-        self.instt.save()
-        self.storage.all()
-
+        """

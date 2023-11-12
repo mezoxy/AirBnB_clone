@@ -115,7 +115,10 @@ class HBNBCommand(cmd.Cmd):
         patern = r"^{}.*".format(args)
         if len(args) != 0:
             if args in self.classes:
-                lis = [str(val) for key, val in storage.all().items() if re.match(patern, key)]
+                lis = [
+                        str(val)
+                        for key, val in storage.all().items() if re.match(
+                            patern, key)]
                 print(lis)
             else:
                 print("** class doesn't exist **")
@@ -142,6 +145,15 @@ class HBNBCommand(cmd.Cmd):
             self.do_all(lis[0])
         elif lis[1] == "count()":
             self.do_count(lis[0])
+        elif re.match(r"show.*", lis[1]):
+            match = re.search(r"show\(\"(.*)\"\)", lis[1])
+            if match:
+                iD = match.group(1)
+                self.do_show(lis[0] + " " + iD)
+        elif re.match(r"destroy", lis[1]):
+            match = re.match(r"destroy\(\"(.*)\"\)", lis[1])
+            iD = match.group(1)
+            self.do_destroy(lis[0] + " " + iD)
         else:
             super().default(args)
 
@@ -158,6 +170,7 @@ class HBNBCommand(cmd.Cmd):
             for key in storage.all():
                 num_of_obj += 1
             print(num_of_obj)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
