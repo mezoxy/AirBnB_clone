@@ -33,8 +33,7 @@ class TestBaseModel(unittest.TestCase):
         """
         self.assertTrue(
                 re.match(
-                    r'^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-'
-                    r'[a-f0-9]{12}$',
+                    r'^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$',
                     str(self.inst.id))
                 )
 
