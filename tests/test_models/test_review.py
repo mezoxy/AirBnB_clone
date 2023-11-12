@@ -16,7 +16,7 @@ class TestReviewFile(unittest.TestCase):
 
     def test_check_type(self):
         self.assertTrue(issubclass(Review, BaseModel)
-        self.assertTrue(isinstance(self.rev, Review)
+        self.assertTrue(isinstance(self.rev, Review))
 
     def test_idd(self):
         self.assertTrue(type(self.rev.user_id), str)
