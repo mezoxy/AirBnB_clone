@@ -25,14 +25,23 @@ class TestBaseModel(unittest.TestCase):
     def test_id(self):
         self.assertTrue(hasattr(self.inst, "id"))
 
+    # noqa
     def test_pattern(self):
-        """test if inst matches a specific pattern defined by a regular expression"""
-        self.assertTrue(re.match((r'^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$'), str(self.inst.id)))
-        
+        """
+            test if inst matches a specific pattern
+            defined by a regular expression
+        """
+        self.assertTrue(
+                re.match(
+                     r'^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-'
+                     r'[89ab][a-f0-9]{3}-[a-f0-9]{12}$',
+                     str(self.inst.id))
+                )
+
     def test_uniqId(self):
         """check if too instance dont have the same id"""
         self.assertNotEqual(self.inst1.id, self.inst.id)
-        
+
     def test_type(self):
         self.assertIsInstance(self.inst, BaseModel)
         self.assertIsInstance(self.inst.id, str)
@@ -43,8 +52,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(self.inst1.updated_at, self.inst.created_at)
 
     def test_str(self):
-        self.assertEqual("[BaseModel] ({}) {}".format(self.inst.id,
-            self.inst.__dict__), str(self.inst))
+        self.assertEqual("[BaseModel] ({}) {}".format(
+            self.inst.id, self.inst.__dict__), str(self.inst))
 
     def test_save(self):
         updated = self.inst1.updated_at
@@ -73,13 +82,17 @@ class TestBaseModel(unittest.TestCase):
             self.inst.to_dict(None)
 
     def test_strrepr(self):
-        self.inst = BaseModel(id=str(uuid.uuid4()), created_at=str(datetime.now()), updated_at=str(datetime.now()))
+        self.inst = BaseModel(
+                id=str(uuid.uuid4()),
+                created_at=str(datetime.now()),
+                updated_at=str(datetime.now()))
         repr_str = f"[BaseModel] ({self.inst.id})"
         repr_str += " {}: '{}',".format('{"id"', self.inst.id)
         repr_str += f" 'created_at': {repr(self.inst.created_at)},"
-        repr_str += " 'updated_at': {}{}".format(repr(self.inst.updated_at), '}')
+        repr_str += " 'updated_at': {}{}".format(
+                repr(self.inst.updated_at), '}')
+        self.assertEqual(str(self.inst), repr_str.replace('"', "'"))
 
-        self.assertEqual(str(self.inst), repr_str.replace('"',"'"))
 
 if __name__ == '__main__':
     unittest.main()

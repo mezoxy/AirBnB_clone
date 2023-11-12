@@ -6,6 +6,7 @@ from models.user import User
 import unittest
 from datetime import datetime
 
+
 class TestUserClass(unittest.TestCase):
     """class user test"""
 

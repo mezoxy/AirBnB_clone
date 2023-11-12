@@ -25,10 +25,10 @@ class Test_class(unittest.TestCase):
 
     def test_id(self):
         for element in self.A.items():
-                self.assertEqual(type(self.sity.state_id), str)
-                self.assertEqual(type(self.sity.updated_at), datetime)
-                self.assertEqual(type(self.sity.created_at), datetime)
-                self.assertEqual(type(self.sity.name), str)
+            self.assertEqual(type(self.sity.state_id), str)
+            self.assertEqual(type(self.sity.updated_at), datetime)
+            self.assertEqual(type(self.sity.created_at), datetime)
+            self.assertEqual(type(self.sity.name), str)
 
     def test_check_var(self):
         self.sity.number = 89
@@ -37,6 +37,7 @@ class Test_class(unittest.TestCase):
         self.assertTrue('updated_at' in self.A)
         self.assertTrue('number' in self.A)
         self.assertTrue('name' in self.A)
+
 
 if __name__ == '__main__':
     unittest.main()

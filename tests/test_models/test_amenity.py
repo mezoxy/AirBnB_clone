@@ -4,11 +4,12 @@ import unittest
 from models.amenity import Amenity
 from models.base_model import BaseModel
 
+
 class TestAmenity(unittest.TestCase):
     """amenity test case"""
 
     def setUp(self):
-       self.am = Amenity()
+        self.am = Amenity()
 
     def test_type(self):
         self.assertTrue(issubclass(Amenity, BaseModel))
@@ -16,6 +17,7 @@ class TestAmenity(unittest.TestCase):
 
     def test_name(self):
         self.assertTrue(type(self.am.name), str)
+
 
 if __name__ == "__main__":
     unittest.main()
