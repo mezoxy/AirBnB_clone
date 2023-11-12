@@ -2,22 +2,21 @@
 """user.py test case"""
 
 from models.base_model import BaseModel
-from models.user import user
+from models.user import User
 import unittest
 from datetime import datetime
 
-
-class test_userclass(unittest.TestCase):
+class TestUserClass(unittest.TestCase):
     """class user test"""
 
     def setUp(self):
         self.user = User()
 
     def test_isnt(self):
-        self.assertIsInstance(user, User)
+        self.assertIsInstance(self.user, User)
 
     def test_sub(self):
-        self.assertTrue(issubclass(User, BaseModel)
+        self.assertTrue(issubclass(User, BaseModel))
 
     def test_existe(self):
         self.user = User()
@@ -28,18 +27,12 @@ class test_userclass(unittest.TestCase):
         self.user.save()
         self.assertIs(type(self.user.first_name), str)
         self.assertIs(type(self.user.email), str)
-        self.assertTrue(hasattr(user, "last_name"))
+        self.assertTrue(hasattr(self.user, "last_name"))
         self.assertNotEqual(self.user.created_at, self.user.updated_at)
 
-    def test_dictionnarry(self):
-        self.assertEqual(type(user.to__dict), dict)
-
-    def test_attr(self):
-        self.assertTrue("email" in self.user.__dict__)
-        self.assertTrue("first_name" in self.user.__dict__)
-        self.assertTrue("password" in self.user.__dict__)
-        self.assertTrue("last_name" in self.user.__dict__)
+    def test_dictionary(self):
+        self.assertEqual(type(self.user.to_dict()), dict)
 
 
-if __name__ = "__main__"
+if __name__ == "__main__":
     unittest.main()

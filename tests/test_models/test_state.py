@@ -1,19 +1,20 @@
 #!/usr/bin/python3
 """state class test"""
 import unittest
+from datetime import datetime
 from models.state import State
 from models.base_model import BaseModel
 
 
-def Teststate(unittest.TestCase):
+class TestState(unittest.TestCase):
     """all test"""
 
     def setUp(self):
         self.state = State()
 
     def test_inst(self):
-        self.assertIsInstance(State(), BaseModel())
-        self.assertIsInstance(self.state, State())
+        self.assertIsInstance(State(), BaseModel)
+        self.assertIsInstance(self.state, State)
 
     def test_element_dictio(self):
         self.assertEqual(type(self.state.id), str)
@@ -32,5 +33,5 @@ def Teststate(unittest.TestCase):
             State(id=None, created_at=None, updated_at=None)
 
 
-if __name__ = "__name__"
+if __name__ == "__main__":
     unittest.main()

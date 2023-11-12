@@ -1,36 +1,39 @@
 #!/usr/bin/python3
-"""unittest of file storage"""
-
+"""this is test file storage"""
 import unittest
 from models.engine.file_storage import FileStorage
-from models import storage
+from models.base_model import BaseModel
 
 
-class FileStorage(unittest.TestCase):
+class TestFileStorage(unittest.TestCase):
     """all test of this class is here"""
 
     def setUp(self):
-        instt = FileStorage()
+        self.instt = FileStorage()
 
     def test_instante(self):
-        self.assertIsInstance(instt, FileStorage)
+        self.assertIsInstance(self.instt, FileStorage)
 
     def test_all(self):
-        instt.all() = obj
+        obj = self.instt.all()
         self.assertIsInstance(obj, dict)
 
     def test_new(self):
-        self.instt.new() = __objects
-        for key in self.__objects.items():
-            self.assertEqual(key, f"{self.__class__.__name__}.{self.id}")
+        obj = BaseModel()
+        self.instt.new(obj)
+        all_objects = self.instt.all()
+        key = f"{obj.__class__.__name__}.{obj.id}"
+
+        self.assertIn(key, all_objects)
 
     def test_save(self):
-        self.instt.name = "task5"
+        obj = BaseModel()
+        self.instt.new(obj)
         self.instt.save()
-        __objects = self.instt.all()
-        self.assertIn(f"{self.__class__.__name__}.{self.id}", __objects)
+        all_objects = self.instt.all()
+        key = f"{obj.__class__.__name__}.{obj.id}"
 
-    def test_save2(self):
-        self.instt.save()
-        self.storage.all()
+        self.assertIn(key, all_objects)
 
+if __name__ == "__main__":
+    unittest.main()
