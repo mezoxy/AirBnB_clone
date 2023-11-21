@@ -1,0 +1,44 @@
+.filters{
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    text-align: right;
+    position: relative;
+}
+button{
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border-radius: 4px;
+    border: unset;
+    margin-right: 30px;
+    margin-top: 11px;
+    opacity: 90%;
+    align-content: center;
+}
+.locations{
+    height: 100%;
+    width: 25%;
+    border-right: 1px solid #DDDDDD;
+    float: left;
+}
+h3{
+    font-weight: 600;
+    text-align: left;
+    margin: auto 50px;
+    margin-top: 20px;
+}
+h4{
+    font-weight: 400;
+    font-size: 14px;
+    text-align: left;
+    margin: auto 50px;
+}
+.anenities{
+    float: left;
+    height: 100%;
+    width: 25%;
+}
